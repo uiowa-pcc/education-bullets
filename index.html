@@ -50,11 +50,15 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <h2 id="experience-title">Which experience is this bullet about?</h2>
     <p class="small">Choose a recent experience or enter one below.</p>
     <div class="recent-wrap" id="recentWrap" hidden>
-      <strong>Use a recent experience</strong>
-      <div class="recent-list" id="recentList" style="margin-top:8px"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <strong>Use a recent experience</strong>
+        <button class="btn small soft" id="refreshExperiences" type="button">Refresh experiences</button>
+      </div>
+      <p class="small" id="recentStatus" style="margin:6px 0 0"></p>
+      <div class="recent-list" id="recentList" style="margin-top:10px"></div>
       <p class="small" style="margin-top:8px">Recent work appears only when available on this device.</p>
     </div>
-    <div class="field single-field"><label for="experience">Experience, role, project, or responsibility</label><input id="experience" type="text" autocomplete="off" placeholder="e.g., Student Teacher — 4th Grade or Target Team Member"></div>
+    <div class="field single-field"><label for="experience">Experience, role, project, or responsibility</label><input id="experience" type="text" autocomplete="off" placeholder="e.g., Student Teacher — 4th Grade or Target Team Member" oninput="document.getElementById('experienceNext').disabled=!this.value.trim()"></div>
     <div class="step-actions"><div></div><div class="right-actions"><button class="btn primary" id="experienceNext" type="button" disabled>Next →</button></div></div>
   </section>
 
@@ -202,32 +206,92 @@ let mode='teaching', selectedSkill='', selectedVerb='', recent=[], skillsBank=[]
 
 
 function safeRead(key){try{const x=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
+function safeStoredJson(key,fallback=null){try{const raw=localStorage.getItem(key);return raw===null?fallback:JSON.parse(raw)}catch{return fallback}}
 function safeWrite(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true}catch{return false}}
-function builderExperiences(){
-  try{
-    const data=JSON.parse(localStorage.getItem(BUILDER_KEY)||'null');
-    if(!data||!Array.isArray(data.experiences))return[];
-    return data.experiences.filter(x=>x&&String(x.title||'').trim()).map(x=>({
-      experienceName:String(x.title||'').trim(),
-      context:[x.org,x.district].filter(Boolean).join(' — '),
-      sourceCategory:String(x.section||'').toLowerCase().includes('teaching')?'teaching':'',
-      id:x.id||''
-    }));
-  }catch{return[]}
-}
 function loadData(){
   skillsBank=safeRead(SKILLS_BANK);
-  const ex=[...safeRead(EXPERIENCE_BANK),...builderExperiences()];
-  const seen=new Set();recent=[];
-  const add=(name,context='',sourceCategory='',fromSkills=false)=>{const key=`${norm(name)}|${norm(context)}`;if(!name||seen.has(key))return;seen.add(key);recent.push({name,context,sourceCategory,fromSkills})};
-  skillsBank.forEach(s=>{if(s&&s.experienceName)add(s.experienceName,s.context||'',s.sourceCategory||'',true)});
-  ex.slice().reverse().forEach(x=>{const name=x.experienceName||x.title||'';add(name,x.context||x.org||x.location||'',x.sourceCategory||x.category||'',false)});
-  renderRecent();kept=safeRead(BULLET_BANK);renderSaved();
+  const merged=[];
+  const seen=new Set();
+  const add=(raw,source='saved')=>{
+    if(!raw||typeof raw!=='object')return;
+    const item=raw.experience&&typeof raw.experience==='object'?raw.experience:raw;
+    const name=String(item.experienceName||item.title||item.role||item.name||'').trim();
+    if(!name)return;
+    const context=String(item.context||item.org||item.organization||item.school||item.setting||item.district||'').trim();
+    const key=`${norm(name)}|${norm(context)}`;
+    if(seen.has(key))return;
+    seen.add(key);
+    merged.push({
+      name,
+      context,
+      sourceCategory:item.sourceCategory||item.category||'',
+      section:item.section||item.resumeSection||'',
+      id:String(item.id||item.sourceBrainstormId||`${source}-${merged.length}`),
+      source
+    });
+  };
+  const addArray=(value,source)=>{if(Array.isArray(value))value.forEach(item=>add(item,source))};
+
+  // Skills results can include an experience even when it was not saved elsewhere.
+  skillsBank.forEach(item=>add(item,'skills activity'));
+
+  // Current educator Experience Brainstorm.
+  addArray(safeStoredJson(EXPERIENCE_BANK,[]),'experience brainstorm');
+
+  // Current educator Resume Builder. Support direct and wrapped shapes.
+  const builder=safeStoredJson(BUILDER_KEY,null);
+  if(builder&&typeof builder==='object'){
+    addArray(builder.experiences,'resume builder');
+    if(builder.data&&typeof builder.data==='object')addArray(builder.data.experiences,'resume builder');
+  }
+
+  // Compatibility with earlier educator resume/experience keys.
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const key=localStorage.key(i)||'';
+      if(!/^uiowa/i.test(key)||!/(education|resume|experience)/i.test(key))continue;
+      if([EXPERIENCE_BANK,BUILDER_KEY,SKILLS_BANK,BULLET_BANK].includes(key))continue;
+      const value=safeStoredJson(key,null);
+      if(Array.isArray(value))addArray(value,'earlier educator tool');
+      else if(value&&typeof value==='object'){
+        addArray(value.experiences,'earlier educator tool');
+        if(value.data&&typeof value.data==='object')addArray(value.data.experiences,'earlier educator tool');
+      }
+    }
+  }catch(e){}
+
+  recent=merged;
+  renderRecent();
+  kept=safeRead(BULLET_BANK);
+  renderSaved();
 }
-function renderRecent(){$('recentList').innerHTML='';$('recentWrap').hidden=!recent.length;recent.slice(0,12).forEach((r,i)=>{const b=document.createElement('button');b.type='button';b.className='recent-btn';b.innerHTML=`<span>${esc(r.name)}</span>${r.context?`<span class="recent-context">${esc(r.context)}</span>`:''}`;b.setAttribute('aria-pressed','false');b.onclick=()=>{[...$('recentList').children].forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');$('experience').value=r.name;setMode(detectMode(r.name,r.sourceCategory));selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';renderSkills();renderVerbs();build();updateNav()};$('recentList').appendChild(b)})}
+function renderRecent(){
+  $('recentList').innerHTML='';
+  $('recentWrap').hidden=!recent.length;
+  if($('recentStatus'))$('recentStatus').textContent=recent.length?`Found ${recent.length} recent experience${recent.length===1?'':'s'} from your educator resume tools.`:'';
+  recent.forEach((r,i)=>{
+    const b=document.createElement('button');
+    b.type='button';b.className='recent-btn';
+    b.innerHTML=`<span>${esc(r.name)}</span>${r.context?`<span class="recent-context">${esc(r.context)}</span>`:''}`;
+    b.setAttribute('aria-pressed','false');
+    b.onclick=()=>{
+      [...$('recentList').children].forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      $('experience').value=r.name;
+      $('experienceNext').disabled=false;
+      setMode(detectMode(r.name,r.sourceCategory||r.section));
+      selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';
+      renderSkills();renderVerbs();build();updateNav();
+    };
+    $('recentList').appendChild(b);
+  });
+}
 function setMode(next){mode=next;document.querySelectorAll('.mode-btn').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));updateModeText();renderSkills();build();updateNav()}
 document.querySelectorAll('.mode-btn').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$('showFallback').onclick=()=>{fallbackForced=true;renderSkills()};
-$('experience').addEventListener('input',updateNav);$('experience').addEventListener('change',()=>{setMode(detectMode($('experience').value));selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';renderSkills();renderVerbs();updateNav()});
+const syncExperienceNext=()=>{$('experienceNext').disabled=!$('experience').value.trim()};
+['input','keyup','change','paste','compositionend'].forEach(evt=>$('experience').addEventListener(evt,()=>{if(evt==='paste')setTimeout(syncExperienceNext,0);else syncExperienceNext()}));
+$('experience').addEventListener('change',()=>{setMode(detectMode($('experience').value));selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';renderSkills();renderVerbs();updateNav()});
+if($('refreshExperiences'))$('refreshExperiences').onclick=()=>{loadData();updateNav()};
 
 function matchingSkillResult(){const n=norm($('experience').value);if(!n)return null;return skillsBank.find(x=>norm(x.experienceName)===n)||null}
 function categoryNameFromEntry(c={}){return c.name||competencyIdToName[norm(c.id).replace(/ /g,'')]||competencyIdToName[c.id]||''}
