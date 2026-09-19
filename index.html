@@ -56,7 +56,7 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
       </div>
       <p class="small" id="recentStatus" style="margin:6px 0 0"></p>
       <div class="recent-list" id="recentList" style="margin-top:10px"></div>
-      <p class="small" style="margin-top:8px">Recent work appears only when available on this device.</p>
+      <p class="small" style="margin-top:8px">This list uses the same saved experiences as the Skills activity. Completing Skills adds power verbs to a matching experience; it does not create another experience.</p>
     </div>
     <div class="field single-field"><label for="experience">Experience, role, project, or responsibility</label><input id="experience" type="text" autocomplete="off" placeholder="e.g., Student Teacher — 4th Grade or Target Team Member" oninput="document.getElementById('experienceNext').disabled=!this.value.trim()"></div>
     <div class="step-actions"><div></div><div class="right-actions"><button class="btn primary" id="experienceNext" type="button" disabled>Next →</button></div></div>
@@ -209,6 +209,8 @@ function safeRead(key){try{const x=JSON.parse(localStorage.getItem(key)||'[]');r
 function safeStoredJson(key,fallback=null){try{const raw=localStorage.getItem(key);return raw===null?fallback:JSON.parse(raw)}catch{return fallback}}
 function safeWrite(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true}catch{return false}}
 function loadData(){
+  // Use the same experience sources and parsing rules as the Education Skills activity.
+  // Skills results decorate a matching experience; they never create a new experience entry.
   skillsBank=safeRead(SKILLS_BANK);
   const merged=[];
   const seen=new Set();
@@ -232,20 +234,18 @@ function loadData(){
   };
   const addArray=(value,source)=>{if(Array.isArray(value))value.forEach(item=>add(item,source))};
 
-  // Skills results can include an experience even when it was not saved elsewhere.
-  skillsBank.forEach(item=>add(item,'skills activity'));
-
-  // Current educator Experience Brainstorm.
+  // 1) Current educator Experience Brainstorm — primary source.
   addArray(safeStoredJson(EXPERIENCE_BANK,[]),'experience brainstorm');
 
-  // Current educator Resume Builder. Support direct and wrapped shapes.
+  // 2) Current educator Resume Builder — add experiences not already in the brainstorm.
   const builder=safeStoredJson(BUILDER_KEY,null);
   if(builder&&typeof builder==='object'){
     addArray(builder.experiences,'resume builder');
     if(builder.data&&typeof builder.data==='object')addArray(builder.data.experiences,'resume builder');
   }
 
-  // Compatibility with earlier educator resume/experience keys.
+  // 3) Same compatibility scan used by the Education Skills activity.
+  // Do not scan the Skills bank or Bullet bank, because those should never create experiences.
   try{
     for(let i=0;i<localStorage.length;i++){
       const key=localStorage.key(i)||'';
