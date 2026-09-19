@@ -24,6 +24,16 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
 
 .stepper{display:flex;gap:7px;overflow-x:auto;padding:2px 0 5px;margin-top:18px;scrollbar-width:thin}.step-chip{flex:0 0 auto;border:1px solid #D6D6D6;border-radius:999px;padding:6px 10px;background:#fff;color:#555;font-size:.76rem;font-weight:700}.step-chip.current{background:#000;color:#fff;border-color:#000}.step-chip.done{background:#F5F5F5;color:#000}.step-chip.done::before{content:"✓ ";font-weight:700}.step-panel[hidden],#savedPanel[hidden]{display:none!important}.step-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px}.step-actions .right-actions{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}.skill-group-label{font-weight:700;font-size:.9rem;margin:0 0 8px}.handoff .small{margin-bottom:9px}.handoff details{margin-top:9px}.handoff summary,.skill-more summary{cursor:pointer;font-weight:700;font-size:.88rem}.skill-more{margin-top:10px}.skill-more .chips{margin-top:9px}.mode-card{padding:14px;background:var(--soft);border-radius:12px;margin-top:12px}.mode-card .hint{margin-top:9px}.single-field{max-width:760px}.saved-next{margin-top:16px;padding-top:14px;border-top:1px solid #E4E4E4}.verb-btn[aria-pressed="true"]{background:#111;color:#fff;border-color:#111;box-shadow:inset 0 -4px 0 var(--gold)}.action-compose{border:1.5px solid #B8B8B8;border-radius:12px;background:#fff;overflow:hidden}.action-prefix{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--soft-gold);border-bottom:1px solid #E5D9A4;font-size:.9rem}.action-prefix strong{font-size:1rem}.action-compose textarea{border:0;border-radius:0;min-height:105px;outline:0}.action-compose:focus-within{outline:3px solid #7AB8E8;outline-offset:2px}.action-compose textarea:focus{outline:0}.action-warning{color:#8A4B00;font-weight:700}.selected-verb-note{margin-top:10px;padding:10px 12px;background:var(--soft-gold);border-radius:10px;font-size:.9rem}
 @media(max-width:760px){.step-actions{align-items:stretch}.step-actions,.step-actions .right-actions{flex-direction:column}.step-actions .right-actions{margin-left:0}.step-actions .btn{width:100%}.step-chip{font-size:.72rem}}
+
+/* Match the general resume builder interaction and review patterns. */
+.bullet-so-far{margin:0 0 16px;border-left:5px solid var(--gold);padding:11px 13px;background:#FAFAFA;border-radius:0 10px 10px 0}.bullet-so-far .label{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#555;margin-bottom:3px}.bullet-so-far .text{font-weight:500}.preview-empty{color:var(--gray);font-weight:400}
+.verb-input-shell{display:flex;align-items:stretch;border:1.5px solid #B8B8B8;border-radius:10px;background:#fff;overflow:hidden}.verb-prefix{display:flex;align-items:center;padding:0 0 0 12px;font-weight:700;white-space:nowrap}.verb-input-shell input{border:0!important;border-radius:0!important;outline:0!important;padding-left:6px!important}.verb-input-shell:focus-within{outline:3px solid var(--gold);outline-offset:3px}
+.deep-dive{margin-top:12px;border:1px solid #D8D8D8;border-radius:14px;padding:15px;background:#fff}.deep-dive .deep-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#555;margin-bottom:5px}.deep-dive strong{display:block;font-size:1rem;margin-bottom:5px}.deep-dive p{font-size:.88rem;color:#4A4B4D;margin:0 0 10px}.deep-dive textarea{min-height:92px}.deep-example{margin-top:7px;font-size:.82rem;color:var(--gray)}
+.generic-detail-wrap[hidden],.deep-dive[hidden]{display:none!important}.detail-editor{border:1px solid #D8D8D8;border-radius:12px;padding:12px;background:#fff}.detail-editor label{display:block;font-size:.92rem;margin-bottom:4px}.detail-editor .hint{display:block;line-height:1.35;margin-bottom:8px}.detail-editor textarea{min-height:72px;font-size:.92rem}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0}.review-card{border:1px solid #D9D9D9;border-radius:12px;padding:13px;background:#fff}.review-card.good{background:#FAFAFA}.review-card.attention{border-color:#D6B100;background:#FFF9E6;box-shadow:inset 4px 0 0 var(--gold)}.review-card strong{display:block;margin-bottom:3px}.review-card p{font-size:.87rem;color:#424345;margin:0}.review-status{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;margin-bottom:7px;color:#555}.review-card.attention .review-status{color:#5A4A00}.formula-strip{margin:14px 0 0;padding:9px 11px;background:var(--soft);border-radius:10px;font-size:.86rem}.tip-box{margin:10px 0 0;padding:12px 14px;background:var(--soft);border-radius:12px;font-size:.9rem}.final-box label{display:block;margin-bottom:6px}.final-box textarea{min-height:105px;font-size:1rem}
+.ai-help{margin:16px 0 0;padding:14px 15px;background:#FFFCF0;border:1px solid #E2D9A8;border-left:5px solid var(--gold);border-radius:0 12px 12px 0}.ai-help h3{font-size:1.02rem;margin:0 0 5px}.ai-help p{font-size:.89rem;color:#3F4042;margin:0 0 10px}.ai-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#555;margin-bottom:4px}.ai-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:3px}.ai-status{min-height:1.25em;margin-top:8px;font-size:.86rem;font-weight:700}.ai-details{margin-top:8px;font-size:.84rem;color:#555}.ai-details summary{cursor:pointer;font-weight:700;color:#333}.ai-details p{font-size:.84rem;margin:7px 0 0;color:#555}.ai-privacy{font-size:.78rem!important;color:var(--gray)!important;margin-top:8px!important}
+@media(max-width:760px){.review-grid{grid-template-columns:1fr}.verb-input-shell{min-height:46px}.deep-dive{padding:13px}}
+
 </style>
 </head>
 <body>
@@ -37,8 +47,8 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <div class="stepper" aria-label="Bullet builder steps">
       <div class="step-chip current" data-chip="1">Experience</div>
       <div class="step-chip" data-chip="2">Power verb</div>
-      <div class="step-chip" data-chip="3">Task / action</div>
-      <div class="step-chip" data-chip="4">Detail</div>
+      <div class="step-chip" data-chip="3">What you did</div>
+      <div class="step-chip" data-chip="4">Make it specific</div>
       <div class="step-chip" data-chip="5">Review</div>
     </div>
   </section>
@@ -91,41 +101,57 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
   </section>
 
   <section class="panel step-panel" id="stepAction" data-step="3" hidden aria-labelledby="action-title">
-    <div class="step-label"><span class="step-number">3</span> Task / action</div>
+    <div class="step-label"><span class="step-number">3</span> What you did</div>
     <h2 id="action-title">Finish the thought</h2>
-    <p class="small">Your power verb is already in the bullet. Add only the task, responsibility, or instructional action that came after it.</p>
-    <div class="callout" id="modeCallout"></div>
+    <p class="small">Your power verb is already part of the bullet. Add the task or responsibility that came after it.</p>
     <div class="dynamic-help" id="skillPrompt"></div>
     <div class="field">
-      <label for="what">Finish the bullet after <span id="actionVerbQuestion">your power verb</span></label>
-      <div class="action-compose">
-        <div class="action-prefix"><span>Your bullet starts with</span><strong id="actionVerbPrefix">—</strong></div>
-        <textarea id="what" aria-describedby="actionHint actionStatus"></textarea>
-      </div>
-      <span class="hint" id="actionHint">Do not add another opening verb. Finish the phrase that already starts with the word above.</span>
+      <label for="what">Add what you did after your power verb</label>
+      <div class="verb-input-shell"><span class="verb-prefix" id="verbPrefix"></span><input id="what" type="text" autocomplete="off" aria-describedby="actionHint actionStatus"></div>
+      <span class="hint" id="actionHint">Finish the phrase—do not add another opening verb.</span>
       <div class="status" id="actionStatus" role="status" aria-live="polite"></div>
     </div>
     <div class="step-actions"><button class="btn" data-back="2" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="whatNext" type="button" disabled>Next →</button></div></div>
   </section>
 
   <section class="panel step-panel" id="stepDetail" data-step="4" hidden aria-labelledby="detail-title">
-    <div class="step-label"><span class="step-number">4</span> Useful detail</div>
-    <h2 id="detail-title">Add one detail that makes the action meaningful</h2>
-    <p class="small" id="detailHint">Choose the type of detail that adds the most useful context.</p>
-    <div class="formula"><strong>Your bullet so far:</strong> <span id="basePreview"></span></div>
-    <div class="detail-options" style="margin-top:8px"><button class="detail-option" type="button" data-detail="scope" aria-pressed="false">Who / scope</button><button class="detail-option" type="button" data-detail="how" aria-pressed="false">How / approach</button><button class="detail-option" type="button" data-detail="result" aria-pressed="false">Why / result</button></div>
-    <div class="detail-editor" id="scopeEditor" hidden><label for="scope">Who or what was involved?</label><textarea id="scope"></textarea></div>
-    <div class="detail-editor" id="howEditor" hidden><label for="how">How did you do it?</label><textarea id="how"></textarea></div>
-    <div class="detail-editor" id="resultEditor" hidden><label for="result">Why did it matter or what happened?</label><textarea id="result"></textarea></div>
+    <div class="step-label"><span class="step-number">4</span> Make it specific</div>
+    <h2 id="detail-title">What makes this experience stand out?</h2>
+    <p class="small" id="detailHint">Add one detail that helps an employer see more than the basic task.</p>
+    <div class="bullet-so-far"><div class="label">Your bullet so far</div><div class="text" id="basePreview"></div></div>
+    <div class="deep-dive" id="teachingDeepDive">
+      <span class="deep-label">Dig deeper</span>
+      <strong id="deepQuestion">What makes this more than a basic teaching task?</strong>
+      <p id="deepThink">Think about the student need, instructional choice, evidence, or outcome that shaped what you did.</p>
+      <label for="teachingDetail">Add one specific detail</label>
+      <textarea id="teachingDetail" aria-describedby="deepExample"></textarea>
+      <div class="deep-example" id="deepExample"></div>
+    </div>
+    <div class="generic-detail-wrap" id="genericDetailWrap" hidden>
+      <div class="detail-options"><button class="detail-option" type="button" data-detail="scope" aria-pressed="false">Who / scope</button><button class="detail-option" type="button" data-detail="how" aria-pressed="false">How / approach</button><button class="detail-option" type="button" data-detail="result" aria-pressed="false">Why / result</button></div>
+      <div class="detail-editor" id="scopeEditor" hidden><label for="scope">Who or what was involved?</label><span class="hint">Population, scale, setting, or frequency.</span><textarea id="scope"></textarea></div>
+      <div class="detail-editor" id="howEditor" hidden><label for="how">How did you do it?</label><span class="hint">Approach, strategy, tool, or way you handled the work.</span><textarea id="how"></textarea></div>
+      <div class="detail-editor" id="resultEditor" hidden><label for="result">Why did it matter or what happened?</label><span class="hint">Purpose, result, or outcome.</span><textarea id="result"></textarea></div>
+    </div>
     <div class="step-actions"><button class="btn" data-back="3" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="detailNext" type="button" disabled>Review →</button></div></div>
   </section>
 
   <section class="panel step-panel" id="stepReview" data-step="5" hidden aria-labelledby="review-title">
     <div class="step-label"><span class="step-number">5</span> Review</div>
     <h2 id="review-title">Quick check</h2>
-    <div class="preview empty" id="preview">Your bullet will appear here as you build it.</div>
-    <div class="check-list" id="checks"></div>
-    <div class="field"><label for="final">Final version</label><textarea id="final" placeholder="Edit for accuracy and flow."></textarea><span class="hint">Keep it concise. No “I” and no ending period.</span></div>
+    <div class="review-grid" id="reviewGrid"></div>
+    <div class="final-box"><label for="final">Your bullet <span class="hint">— edit for accuracy and flow. Keep it concise—not a full sentence.</span></label><textarea id="final"></textarea></div>
+    <div class="formula-strip"><strong>Final check:</strong> Power verb + what you did + one useful detail that shows depth or context</div>
+    <div class="tip-box" id="reviewTip"><strong>For teaching experience:</strong> The strongest bullets usually show an instructional choice, student need, evidence, or outcome—not just a routine duty.</div>
+    <aside class="ai-help" aria-labelledby="ai-help-title">
+      <span class="ai-label">Optional AI help</span>
+      <h3 id="ai-help-title">Want help refining the wording?</h3>
+      <p>Use AI for a second look at the wording—not to add new accomplishments or details.</p>
+      <div class="ai-actions"><button class="btn primary" id="openCopilot" type="button">Copy Prompt + Go to Copilot ↗</button></div>
+      <div class="ai-status" id="aiStatus" role="status" aria-live="polite"></div>
+      <details class="ai-details"><summary>What will the prompt ask AI to do?</summary><p>Give two concise alternatives using only the facts already in your bullet. It will point out missing context rather than inventing it.</p></details>
+      <p class="ai-privacy">This copies a ready-to-use prompt and opens Microsoft Copilot Chat in a new tab. Paste the prompt into the chat, then review any suggestion before using it.</p>
+    </aside>
     <div class="step-actions"><button class="btn" data-back="4" type="button">← Back</button><div class="right-actions"><button class="btn" id="copyCurrent" type="button">Copy This Bullet</button><button class="btn primary" id="keep" type="button">Keep This Bullet</button></div></div>
     <div class="status" id="status" role="status" aria-live="polite"></div>
   </section>
@@ -344,20 +370,21 @@ $('customVerb').addEventListener('input',()=>{if($('customVerb').value.trim())se
 function chosenVerb(){return clean($('customVerb').value)||selectedVerb}
 
 function updateModeText(){
-  if(mode==='teaching'){
-    $('modeCallout').innerHTML='<strong>Make the teaching more specific.</strong><p>Your verb is already set. Add what you actually did, then use the next screen to show the instructional decision, student need, approach, or evidence.</p>';
-    $('scope').placeholder='e.g., for fourth-grade students in three readiness-based groups';
-    $('how').placeholder='e.g., using progress-monitoring data to adjust support';
-    $('result').placeholder='e.g., to provide targeted fluency practice';
-    $('detailHint').textContent='Choose the detail that best shows the depth of the teaching. Add more than one only when it improves the bullet.';
+  const teaching=mode==='teaching';
+  $('teachingDeepDive').hidden=!teaching;
+  $('genericDetailWrap').hidden=teaching;
+  if(teaching){
+    $('detail-title').textContent='What makes this experience stand out?';
+    $('detailHint').textContent='Add one detail that shows the thinking behind the teaching—not just the basic task.';
   }else{
-    $('modeCallout').innerHTML='<strong>Translate the skill—not the job.</strong><p>Your verb is already set. Add the task or responsibility that proves you used that transferable skill.</p>';
+    $('detail-title').textContent='Add one useful detail';
+    $('detailHint').textContent='Choose one detail that helps an employer see the scale, approach, or purpose of what you did.';
     $('scope').placeholder='e.g., during high-volume shifts or with a five-person team';
     $('how').placeholder='e.g., by resolving concerns and coordinating with coworkers';
     $('result').placeholder='e.g., to keep service moving and address customer needs';
-    $('detailHint').textContent='Choose one detail that helps an employer see the scale, approach, or purpose of what you did.';
   }
   updateActionPrompt();
+  updateDeepDive();
 }
 function promptDataForVerb(verb){
   const target=norm(verb);if(!target)return null;
@@ -368,14 +395,27 @@ function promptDataForVerb(verb){
 }
 function updateActionPrompt(){
   const v=chosenVerb();
-  if($('actionVerbPrefix'))$('actionVerbPrefix').textContent=v||'—';
-  if($('actionVerbQuestion'))$('actionVerbQuestion').textContent=v?v:'your power verb';
+  if($('verbPrefix'))$('verbPrefix').textContent=v||'';
   const data=promptDataForVerb(v);
-  if(!v){$('skillPrompt').innerHTML='<strong>Choose a power verb first.</strong><p>The verb you choose will automatically appear here so you only need to finish the thought.</p>';return}
-  const prompt=data?(mode==='teaching'?data.teach:data.other):(mode==='teaching'?'What did you do that demonstrates this skill in your teaching or education-related experience?':'What task or responsibility demonstrates this skill in the experience?');
-  $('skillPrompt').innerHTML=`<strong>${esc(v)} is already your opening word.</strong><p>${esc(prompt)}</p>`;
-  if(mode==='teaching')$('what').placeholder=taskPlaceholder(v,true);else $('what').placeholder=taskPlaceholder(v,false);
+  if(!v){$('skillPrompt').innerHTML='<strong>Choose a power verb first.</strong><p>The word you choose will carry into this field automatically.</p>';return}
+  const prompt=data?(mode==='teaching'?data.teach:data.other):(mode==='teaching'?'What did you do that shows this skill in your teaching or education-related experience?':'What task or responsibility demonstrates this skill in the experience?');
+  $('skillPrompt').innerHTML=`<strong>${esc(v)} is already included.</strong><p>${esc(prompt)}</p>`;
+  $('what').placeholder=taskPlaceholder(v,mode==='teaching');
+  updateDeepDive();
 }
+function deepDiveForVerb(verb){
+  const v=norm(verb); const inSet=(...words)=>words.some(w=>v===norm(w));
+  if(inSet('Differentiated','Adapted','Adjusted','Modified','Individualized','Accommodated','Scaffolded'))return{q:'What did you change—and what student need made that change important?',think:'Show the instructional decision behind the task. What was different about the learners, content, support, or materials?',ex:'Example detail: “by adjusting text complexity and supports for three reading-readiness groups”',ph:'e.g., by adjusting materials and supports for students at different readiness levels'};
+  if(inSet('Assessed','Monitored','Evaluated','Analyzed','Tracked','Identified','Interpreted'))return{q:'What did the evidence tell you—and what did you do with that information?',think:'Go beyond “assessed students.” Show how checks for understanding, progress data, or observations shaped your next step.',ex:'Example detail: “using exit-ticket results to regroup students and reteach the concept”',ph:'e.g., using progress data to regroup students and adjust the next lesson'};
+  if(inSet('Planned','Designed','Developed','Created','Prepared','Sequenced','Implemented'))return{q:'What did you intentionally design around?',think:'Think about the learning goal, standard, student need, classroom context, or constraint that shaped your plan.',ex:'Example detail: “around a grade-level standard and common misconceptions identified in prior work”',ph:'e.g., around a grade-level standard and needs identified in student work'};
+  if(inSet('Taught','Instructed','Facilitated','Guided','Modeled','Explained','Demonstrated','Presented'))return{q:'What made the instruction more specific than simply “taught” or “led”?',think:'Add the strategy, group, content, student need, or instructional choice that shows how you taught.',ex:'Example detail: “using modeling and guided practice with a small group needing additional fluency support”',ph:'e.g., using modeling and guided practice with a small group needing additional support'};
+  if(inSet('Managed','Established','Reinforced','Redirected','Structured'))return{q:'What classroom need or challenge were you responding to?',think:'Show what you were trying to improve—routines, transitions, engagement, behavior, safety, or group functioning.',ex:'Example detail: “by establishing visual routines that reduced transition confusion”',ph:'e.g., by establishing routines that improved transitions and student independence'};
+  if(inSet('Collaborated','Partnered','Consulted','Coordinated','Communicated','Conferenced'))return{q:'What changed, improved, or became possible because of the collaboration?',think:'Name who you worked with only if it helps; focus on the instructional decision, support, or problem you addressed together.',ex:'Example detail: “with the cooperating teacher to adjust supports based on student progress”',ph:'e.g., with the cooperating teacher to adjust supports based on student progress'};
+  if(inSet('Supported','Mentored','Coached','Encouraged','Motivated','Advocated'))return{q:'What did the student or group need—and what was specific about your support?',think:'Show the need, goal, or barrier you were responding to rather than only saying you supported students.',ex:'Example detail: “by breaking assignments into smaller steps and checking in on progress”',ph:'e.g., by breaking tasks into smaller steps and checking in on progress'};
+  if(inSet('Integrated','Utilized','Used','Applied'))return{q:'How did the tool or strategy improve the learning process?',think:'Avoid simply naming technology or a resource. Show what it helped students or you do.',ex:'Example detail: “to give students immediate practice feedback and identify concepts needing reteaching”',ph:'e.g., to provide immediate feedback and identify concepts needing reteaching'};
+  return{q:'What makes this more than a basic teaching task?',think:'Add the student need, instructional choice, evidence, challenge, or outcome that makes your experience specific.',ex:'Think: What did you notice? What choice did you make? What was different about the students, setting, or approach?',ph:'e.g., by adapting the approach to a specific student need, learning goal, or classroom context'};
+}
+function updateDeepDive(){if(!$('deepQuestion'))return;const d=deepDiveForVerb(chosenVerb());$('deepQuestion').textContent=d.q;$('deepThink').textContent=d.think;$('deepExample').textContent=d.ex;$('teachingDetail').placeholder=d.ph;}
 function taskPlaceholder(verb,teaching){
   const v=norm(verb);
   const map={
@@ -404,10 +444,19 @@ function startsWithExtraVerb(text){const t=clean(text);if(!t)return '';const fir
 function updateActionEntryState(){const extra=startsWithExtraVerb($('what').value);if($('actionStatus')){$('actionStatus').textContent=extra?`You already chose ${chosenVerb()}. Remove “${extra}” and start directly with the task, people, or responsibility that follows ${chosenVerb()}.`:'';$('actionStatus').classList.toggle('action-warning',!!extra)}updateNav()}
 
 document.querySelectorAll('.detail-option').forEach(b=>b.onclick=()=>{const k=b.dataset.detail,ed=$(k+'Editor'),on=b.getAttribute('aria-pressed')==='true';document.querySelectorAll('.detail-option').forEach(x=>{x.setAttribute('aria-pressed','false');$(x.dataset.detail+'Editor').hidden=true});if(on){build();updateNav();return}b.setAttribute('aria-pressed','true');ed.hidden=false;setTimeout(()=>$(k).focus(),0);build();updateNav()});
-['what','scope','how','result'].forEach(id=>$(id).addEventListener('input',()=>{build();if(id==='what')updateActionEntryState();else updateNav()}));$('final').addEventListener('input',checks);
+['what','scope','how','result','teachingDetail'].forEach(id=>$(id).addEventListener('input',()=>{build();if(id==='what')updateActionEntryState();else updateNav()}));$('final').addEventListener('input',renderReview);
 function lowerFirst(s){return s?s[0].toLowerCase()+s.slice(1):s}
-function build(){const v=chosenVerb(),w=clean($('what').value),active=activeDetailKey(),scope=active==='scope'?clean($('scope').value):'',how=active==='how'?clean($('how').value):'',result=active==='result'?clean($('result').value):'';const parts=[];if(v)parts.push(v);if(w)parts.push(v?lowerFirst(w):w);if(scope)parts.push(scope);if(how)parts.push(how);if(result)parts.push(result);const text=clean(parts.join(' ').replace(/\s+/g,' '));const base=[v,w? (v?lowerFirst(w):w):''].filter(Boolean).join(' ');if($('basePreview'))$('basePreview').textContent=base||'Add what you did on the previous screen.';$('preview').textContent=text||'Your bullet will appear here as you build it.';$('preview').classList.toggle('empty',!text);const auto=$('final').dataset.auto||'';if(!$('final').value||$('final').value===auto){$('final').value=text;$('final').dataset.auto=text}checks()}
-function checks(){const t=clean($('final').value),detail=hasDetail(),items=[];if(chosenVerb())items.push(['good','Starts with the power verb you chose']);else items.push(['tip','Choose a power verb so the bullet starts with a clear action']);if(clean($('what').value)&&!startsWithExtraVerb($('what').value))items.push(['good','Finishes the verb with a clear task or action']);else if(startsWithExtraVerb($('what').value))items.push(['tip',`Remove the extra opening verb “${startsWithExtraVerb($('what').value)}” and finish ${chosenVerb()} directly`]);else items.push(['tip','Add the task or action that comes after your power verb']);if(detail)items.push(['good','Adds context about who, how, or why']);else items.push(['tip',mode==='teaching'?'Add a detail that shows the instructional decision, student need, approach, or evidence':'Add one detail that shows the scale, approach, or purpose']);items.push(['tip','Numbers are optional. Add them only when they are accurate and genuinely useful']);$('checks').innerHTML=items.map(([c,x])=>`<div class="check ${c}">${esc(x)}</div>`).join('');if(!t)$('final').dataset.auto=''}
+function selectedDetail(){if(mode==='teaching')return clean($('teachingDetail').value);const active=activeDetailKey();return active?clean($(active).value):''}
+function build(){const v=chosenVerb(),w=clean($('what').value),detail=selectedDetail();const parts=[];if(v)parts.push(v);if(w)parts.push(v?lowerFirst(w):w);if(detail)parts.push(detail);const text=clean(parts.join(' ').replace(/\s+/g,' '));const base=[v,w?(v?lowerFirst(w):w):''].filter(Boolean).join(' ');if($('basePreview'))$('basePreview').textContent=base||'Add what you did on the previous screen.';const auto=$('final').dataset.auto||'';if(!$('final').value||$('final').value===auto){$('final').value=text;$('final').dataset.auto=text}renderReview()}
+function renderReview(){if(!$('reviewGrid'))return;const hasNumber=/\d/.test([$('what').value,$('teachingDetail').value,$('scope').value,$('how').value,$('result').value].join(' '));const detail=selectedDetail();const cards=[{title:'Power verb',body:chosenVerb()||'Choose a power verb',good:!!chosenVerb()},{title:'What you did',body:clean($('what').value)||'Add the task or responsibility',good:!!clean($('what').value)&&!startsWithExtraVerb($('what').value)},{title:mode==='teaching'?'What makes it specific':'Useful detail',body:detail||(mode==='teaching'?'Add the instructional decision, student need, evidence, or outcome':'Add who, how, or why'),good:!!detail},{title:'Data',body:hasNumber?'Included where relevant':'Consider only if it adds useful context or strengthens the bullet',good:hasNumber}];$('reviewGrid').innerHTML='';cards.forEach(c=>{const d=document.createElement('div');d.className=`review-card ${c.good?'good':'attention'}`;d.innerHTML=`<div class="review-status"><span aria-hidden="true">${c.good?'●':'◆'}</span><span>${c.good?'Included':'Consider'}</span></div><strong>${esc(c.title)}</strong><p>${esc(c.body)}</p>`;$('reviewGrid').appendChild(d)});$('reviewTip').innerHTML=mode==='teaching'?'<strong>For teaching experience:</strong> The strongest bullets usually show an instructional choice, student need, evidence, or outcome—not just a routine duty.':'<strong>For other experience:</strong> Keep the original work accurate while making the transferable skill and useful context easy to see.';if(!$('final').value)$('final').dataset.auto=''}
+
+function buildAiPrompt(){const bullet=clean($('final').value);if(!bullet)return '';return `Help me refine this education resume bullet. Use ONLY the facts already present in my bullet. Do not add, infer, or exaggerate responsibilities, results, numbers, tools, skills, student outcomes, or impact. If a meaningful improvement would require information I have not provided, tell me what is missing instead of inventing it.
+
+Current bullet:
+${bullet}
+
+Give me two concise alternate versions that preserve the meaning and facts. Keep the power verb strong, do not use "I," and do not add an ending period. Prefer specific wording over buzzwords. For teaching or education-related experience, preserve the instructional choice, student need, evidence, or context that makes the experience distinctive. If the original is already strong, say so briefly before giving the alternatives.`}
+$('openCopilot').onclick=async()=>{const prompt=buildAiPrompt();if(!prompt){$('aiStatus').textContent='Build your bullet first.';return}const tab=window.open('about:blank','_blank');if(tab){try{tab.opener=null}catch(e){}}let copied=false;try{await navigator.clipboard.writeText(prompt);copied=true}catch(e){const ta=document.createElement('textarea');ta.value=prompt;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{copied=document.execCommand('copy')}catch(err){}ta.remove()}if(tab)tab.location.href='https://copilot.cloud.microsoft/chat';$('aiStatus').textContent=copied?'Prompt copied. Paste it into Copilot when the new tab opens.':'Copilot opened. Copy your bullet manually if needed.'};
 
 $('keep').onclick=()=>{const bullet=clean($('final').value);if(!bullet){$('status').textContent='Build or write a bullet first.';return}const exp=$('experience').value.trim()||'Experience';const dup=kept.some(x=>norm(x.experienceName)===norm(exp)&&norm(x.bullet)===norm(bullet));if(!dup){kept.unshift({id:`b-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,experienceName:exp,experienceType:mode,skill:chosenVerb(),verb:chosenVerb(),bullet,date:new Date().toISOString()});kept=kept.slice(0,40);safeWrite(BULLET_BANK,kept)}$('status').textContent=dup?'This bullet is already saved.':'Bullet kept.';renderSaved();showStep(6)};
 async function copyText(text,msg){if(!text){$('status').textContent='There is nothing to copy yet.';return}try{await navigator.clipboard.writeText(text);$('status').textContent=msg}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');$('status').textContent=msg}catch{$('status').textContent='Copy was blocked. Select the text and copy it manually.'}ta.remove()}}
@@ -424,7 +473,7 @@ function showStep(step,scroll=true){
   updateNav();
 }
 function activeDetailKey(){const b=document.querySelector('.detail-option[aria-pressed="true"]');return b?b.dataset.detail:''}
-function hasDetail(){const k=activeDetailKey();return !!(k&&clean($(k).value))}
+function hasDetail(){if(mode==='teaching')return !!clean($('teachingDetail').value);const k=activeDetailKey();return !!(k&&clean($(k).value))}
 function updateNav(){
   if($('experienceNext'))$('experienceNext').disabled=!$('experience').value.trim();
   if($('skillNext'))$('skillNext').disabled=!chosenVerb();
@@ -433,11 +482,11 @@ function updateNav(){
 }
 $('experienceNext').onclick=()=>{if(!$('experience').value.trim())return;setMode(detectMode($('experience').value));showStep(2)};
 $('skillNext').onclick=()=>{if(chosenVerb()){updateActionPrompt();showStep(3);setTimeout(()=>$('what').focus(),120)}};
-$('whatNext').onclick=()=>{if(clean($('what').value)&&!startsWithExtraVerb($('what').value)){build();showStep(4)}};
-$('detailNext').onclick=()=>{if(hasDetail()){build();showStep(5)}};
+$('whatNext').onclick=()=>{if(clean($('what').value)&&!startsWithExtraVerb($('what').value)){build();updateDeepDive();showStep(4);setTimeout(()=>{if(mode==='teaching')$('teachingDetail').focus()},120)}};
+$('detailNext').onclick=()=>{if(hasDetail()){build();renderReview();showStep(5)}};
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>showStep(Number(b.dataset.back)));
 
-function resetBullet(){selectedVerb='';fallbackForced=false;$('customVerb').value='';['what','scope','how','result','final'].forEach(id=>$(id).value='');$('final').dataset.auto='';document.querySelectorAll('.detail-option').forEach(b=>b.setAttribute('aria-pressed','false'));['scopeEditor','howEditor','resultEditor'].forEach(id=>$(id).hidden=true);$('status').textContent='';renderPowerVerbs();updateModeText();updateActionPrompt();build();showStep(2)}
+function resetBullet(){selectedVerb='';fallbackForced=false;$('customVerb').value='';['what','scope','how','result','teachingDetail','final'].forEach(id=>$(id).value='');$('final').dataset.auto='';document.querySelectorAll('.detail-option').forEach(b=>b.setAttribute('aria-pressed','false'));['scopeEditor','howEditor','resultEditor'].forEach(id=>$(id).hidden=true);$('status').textContent='';renderPowerVerbs();updateModeText();updateActionPrompt();build();showStep(2)}
 $('resetBullet').onclick=resetBullet;$('differentExperience').onclick=()=>{resetBullet();$('experience').value='';setMode('teaching');showStep(1);setTimeout(()=>$('experience').focus(),200)};
 window.addEventListener('focus',()=>{loadData();renderPowerVerbs();updateActionPrompt();updateNav()});
 loadData();setMode('teaching');renderPowerVerbs();updateModeText();updateActionPrompt();build();showStep(1,false);updateNav();
