@@ -22,7 +22,7 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
 @media(max-width:720px){.shell{padding:12px 10px 8px}.intro,.panel{padding:20px 17px;border-radius:16px}.actions .btn{flex:1 1 180px}.mode-btn{flex:1 1 190px}}
 @media print{body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.intro,.panel{box-shadow:none;border:0;padding:0;margin:0}.intro,.panel:not(#savedPanel){display:none!important}#savedPanel{display:block!important}#savedPanel .actions,#savedPanel .saved-actions{display:none!important}}
 
-.stepper{display:flex;gap:7px;overflow-x:auto;padding:2px 0 5px;margin-top:18px;scrollbar-width:thin}.step-chip{flex:0 0 auto;border:1px solid #D6D6D6;border-radius:999px;padding:6px 10px;background:#fff;color:#555;font-size:.76rem;font-weight:700}.step-chip.current{background:#000;color:#fff;border-color:#000}.step-chip.done{background:#F5F5F5;color:#000}.step-chip.done::before{content:"✓ ";font-weight:700}.step-panel[hidden],#savedPanel[hidden]{display:none!important}.step-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px}.step-actions .right-actions{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}.skill-group-label{font-weight:700;font-size:.9rem;margin:0 0 8px}.handoff .small{margin-bottom:9px}.handoff details{margin-top:9px}.handoff summary,.skill-more summary{cursor:pointer;font-weight:700;font-size:.88rem}.skill-more{margin-top:10px}.skill-more .chips{margin-top:9px}.mode-card{padding:14px;background:var(--soft);border-radius:12px;margin-top:12px}.mode-card .hint{margin-top:9px}.single-field{max-width:760px}.saved-next{margin-top:16px;padding-top:14px;border-top:1px solid #E4E4E4}
+.stepper{display:flex;gap:7px;overflow-x:auto;padding:2px 0 5px;margin-top:18px;scrollbar-width:thin}.step-chip{flex:0 0 auto;border:1px solid #D6D6D6;border-radius:999px;padding:6px 10px;background:#fff;color:#555;font-size:.76rem;font-weight:700}.step-chip.current{background:#000;color:#fff;border-color:#000}.step-chip.done{background:#F5F5F5;color:#000}.step-chip.done::before{content:"✓ ";font-weight:700}.step-panel[hidden],#savedPanel[hidden]{display:none!important}.step-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px}.step-actions .right-actions{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}.skill-group-label{font-weight:700;font-size:.9rem;margin:0 0 8px}.handoff .small{margin-bottom:9px}.handoff details{margin-top:9px}.handoff summary,.skill-more summary{cursor:pointer;font-weight:700;font-size:.88rem}.skill-more{margin-top:10px}.skill-more .chips{margin-top:9px}.mode-card{padding:14px;background:var(--soft);border-radius:12px;margin-top:12px}.mode-card .hint{margin-top:9px}.single-field{max-width:760px}.saved-next{margin-top:16px;padding-top:14px;border-top:1px solid #E4E4E4}.verb-btn[aria-pressed="true"]{background:#111;color:#fff;border-color:#111;box-shadow:inset 0 -4px 0 var(--gold)}.action-compose{border:1.5px solid #B8B8B8;border-radius:12px;background:#fff;overflow:hidden}.action-prefix{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--soft-gold);border-bottom:1px solid #E5D9A4;font-size:.9rem}.action-prefix strong{font-size:1rem}.action-compose textarea{border:0;border-radius:0;min-height:105px;outline:0}.action-compose:focus-within{outline:3px solid #7AB8E8;outline-offset:2px}.action-compose textarea:focus{outline:0}.action-warning{color:#8A4B00;font-weight:700}.selected-verb-note{margin-top:10px;padding:10px 12px;background:var(--soft-gold);border-radius:10px;font-size:.9rem}
 @media(max-width:760px){.step-actions{align-items:stretch}.step-actions,.step-actions .right-actions{flex-direction:column}.step-actions .right-actions{margin-left:0}.step-actions .btn{width:100%}.step-chip{font-size:.72rem}}
 </style>
 </head>
@@ -36,8 +36,8 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <p class="meta">Build one bullet at a time. Each screen asks you to make one choice or add one piece.</p>
     <div class="stepper" aria-label="Bullet builder steps">
       <div class="step-chip current" data-chip="1">Experience</div>
-      <div class="step-chip" data-chip="2">Skill + verb</div>
-      <div class="step-chip" data-chip="3">Action</div>
+      <div class="step-chip" data-chip="2">Power verb</div>
+      <div class="step-chip" data-chip="3">Task / action</div>
       <div class="step-chip" data-chip="4">Detail</div>
       <div class="step-chip" data-chip="5">Review</div>
     </div>
@@ -61,9 +61,9 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
   </section>
 
   <section class="panel step-panel" id="stepSkill" data-step="2" hidden aria-labelledby="skill-title">
-    <div class="step-label"><span class="step-number">2</span> Skill</div>
-    <h2 id="skill-title">What should this bullet highlight?</h2>
-    <p class="small">First, confirm the type of experience. Your skill choices will update immediately.</p>
+    <div class="step-label"><span class="step-number">2</span> Power verb</div>
+    <h2 id="skill-title">Choose the skill word that will start your bullet</h2>
+    <p class="small">The power verb is the skill language. Choose the word that most accurately describes what you did—there is no separate skill-category step.</p>
 
     <div class="mode-card" style="margin-bottom:16px">
       <p class="skill-group-label" style="margin-top:0">Experience type</p>
@@ -71,38 +71,40 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
       <span class="hint">We made a best guess from the experience you entered. Change it if needed.</span>
     </div>
 
-    <p class="skill-group-label">Choose one skill type</p>
-    <p id="skillIntro" class="small">If you used the Skills activity, your selected skill types appear first.</p>
     <div class="handoff" id="handoff" hidden>
       <p class="skill-group-label">From your Skills activity</p>
-      <p class="small">Choose the skill type you want this bullet to show.</p>
-      <div class="chips" id="handoffSkills"></div>
-      <details id="handoffMoreBox" hidden><summary>See more of my skill types</summary><div class="chips" id="handoffMoreSkills" style="margin-top:9px"></div></details>
-      <button class="btn soft" id="showFallback" type="button" style="margin-top:11px">Choose a different skill type</button>
+      <p class="small">These are the power verbs you kept for this experience. Choose the one you want this bullet to demonstrate.</p>
+      <div class="verb-grid" id="handoffVerbs"></div>
+      <details id="handoffMoreBox" hidden><summary>See more of my power verbs</summary><div class="verb-grid" id="handoffMoreVerbs" style="margin-top:9px"></div></details>
+      <button class="btn soft" id="showFallback" type="button" style="margin-top:11px">Choose a different power verb</button>
     </div>
     <div id="fallbackSkills">
-      <p class="skill-group-label" id="fallbackLabel">Choose a skill type</p>
-      <div class="chips" id="coreSkills"></div>
-      <details class="skill-more"><summary>See more skill types</summary><div class="chips" id="moreSkills"></div></details>
+      <p class="skill-group-label" id="fallbackLabel">Strong options for this experience</p>
+      <div class="verb-grid" id="coreVerbs"></div>
+      <details class="skill-more"><summary>See more power verbs</summary><div class="verb-grid" id="moreVerbs"></div></details>
     </div>
+    <div class="field single-field" style="margin-top:14px"><label for="customVerb">Or type another accurate power verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Coordinated"></div>
     <div class="status" id="skillStatus" role="status" aria-live="polite"></div>
-
-    <div id="verbArea" hidden style="margin-top:18px;padding-top:18px;border-top:1px solid #E2E2E2">
-      <p class="skill-group-label" id="verbHeading">Choose a power verb</p>
-      <p class="small" id="verbIntro">Choose a skill type first to see a short list of strong education-resume power verbs.</p>
-      <div class="verb-grid" id="verbs"></div>
-      <div class="field single-field" style="margin-top:12px"><label for="customVerb">Or type another accurate power verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Coordinated"></div>
-    </div>
+    <div class="selected-verb-note" id="selectedVerbNote" hidden><strong id="selectedVerbText"></strong> will automatically start your bullet on the next screen.</div>
 
     <div class="step-actions"><button class="btn" data-back="1" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="skillNext" type="button" disabled>Next →</button></div></div>
   </section>
 
   <section class="panel step-panel" id="stepAction" data-step="3" hidden aria-labelledby="action-title">
-    <div class="step-label"><span class="step-number">3</span> What you did</div>
-    <h2 id="action-title">What did you actually do?</h2>
+    <div class="step-label"><span class="step-number">3</span> Task / action</div>
+    <h2 id="action-title">Finish the thought</h2>
+    <p class="small">Your power verb is already in the bullet. Add only the task, responsibility, or instructional action that came after it.</p>
     <div class="callout" id="modeCallout"></div>
     <div class="dynamic-help" id="skillPrompt"></div>
-    <div class="field"><label for="what">Describe the action</label><textarea id="what"></textarea><span class="hint">Start after the power verb. Focus on the responsibility, contribution, or instructional action—not the skill label.</span></div>
+    <div class="field">
+      <label for="what">Finish the bullet after <span id="actionVerbQuestion">your power verb</span></label>
+      <div class="action-compose">
+        <div class="action-prefix"><span>Your bullet starts with</span><strong id="actionVerbPrefix">—</strong></div>
+        <textarea id="what" aria-describedby="actionHint actionStatus"></textarea>
+      </div>
+      <span class="hint" id="actionHint">Do not add another opening verb. Finish the phrase that already starts with the word above.</span>
+      <div class="status" id="actionStatus" role="status" aria-live="polite"></div>
+    </div>
     <div class="step-actions"><button class="btn" data-back="2" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="whatNext" type="button" disabled>Next →</button></div></div>
   </section>
 
@@ -191,11 +193,11 @@ const competencyCatalog={
 };
 const competencyIdToName={career:'Career & Self-Development',communication:'Communication',critical:'Critical Thinking',perspectives:'Other Perspectives',leadership:'Leadership',professionalism:'Professionalism',teamwork:'Teamwork',technology:'Technology'};
 
-const teachingFallback=['Communication','Critical Thinking','Leadership','Professionalism','Teamwork','Other Perspectives'];
-const teachingMore=['Technology','Career & Self-Development'];
-const otherFallback=['Communication','Teamwork','Critical Thinking','Professionalism','Leadership','Other Perspectives'];
-const otherMore=['Technology','Career & Self-Development'];
-let mode='teaching', selectedSkill='', selectedVerb='', recent=[], skillsBank=[], kept=[], fallbackForced=false;
+const teachingFallbackVerbs=['Differentiated','Facilitated','Assessed','Guided','Planned','Collaborated','Adapted','Implemented'];
+const teachingMoreVerbs=['Scaffolded','Monitored','Coordinated','Communicated','Organized','Mentored','Integrated','Evaluated','Instructed','Modeled','Prioritized','Supported'];
+const otherFallbackVerbs=['Communicated','Collaborated','Organized','Prioritized','Adapted','Resolved','Coordinated','Supported'];
+const otherMoreVerbs=['Led','Facilitated','Analyzed','Improved','Mentored','Planned','Implemented','Documented','Guided','Prepared','Tracked','Consulted'];
+let mode='teaching', selectedVerb='', recent=[], skillsBank=[], kept=[], fallbackForced=false;
 
 /* legacy detail-level skill catalog retained below for backward compatibility */
 
@@ -281,94 +283,133 @@ function renderRecent(){
       $('experience').value=r.name;
       $('experienceNext').disabled=false;
       setMode(detectMode(r.name,r.sourceCategory||r.section));
-      selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';
-      renderSkills();renderVerbs();build();updateNav();
+      selectedVerb='';fallbackForced=false;$('customVerb').value='';
+      renderPowerVerbs();updateActionPrompt();build();updateNav();
     };
     $('recentList').appendChild(b);
   });
 }
-function setMode(next){mode=next;document.querySelectorAll('.mode-btn').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));updateModeText();renderSkills();build();updateNav()}
-document.querySelectorAll('.mode-btn').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$('showFallback').onclick=()=>{fallbackForced=true;renderSkills()};
+function setMode(next){mode=next;document.querySelectorAll('.mode-btn').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));updateModeText();renderPowerVerbs();updateActionPrompt();build();updateNav()}
+document.querySelectorAll('.mode-btn').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$('showFallback').onclick=()=>{fallbackForced=true;renderPowerVerbs()};
 const syncExperienceNext=()=>{$('experienceNext').disabled=!$('experience').value.trim()};
 ['input','keyup','change','paste','compositionend'].forEach(evt=>$('experience').addEventListener(evt,()=>{if(evt==='paste')setTimeout(syncExperienceNext,0);else syncExperienceNext()}));
-$('experience').addEventListener('change',()=>{setMode(detectMode($('experience').value));selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';renderSkills();renderVerbs();updateNav()});
+$('experience').addEventListener('change',()=>{setMode(detectMode($('experience').value));selectedVerb='';fallbackForced=false;$('customVerb').value='';renderPowerVerbs();updateActionPrompt();updateNav()});
 if($('refreshExperiences'))$('refreshExperiences').onclick=()=>{loadData();updateNav()};
 
 function matchingSkillResult(){const n=norm($('experience').value);if(!n)return null;return skillsBank.find(x=>norm(x.experienceName)===n)||null}
-function categoryNameFromEntry(c={}){return c.name||competencyIdToName[norm(c.id).replace(/ /g,'')]||competencyIdToName[c.id]||''}
-function categoriesFromResult(result){
+function savedPowerVerbs(result){
   if(!result)return[];
-  const vals=[];
-  (result.competencies||[]).forEach(c=>{const n=c.name||competencyIdToName[c.id];if(n&&competencyCatalog[n])vals.push(n)});
-  (result.strengths||[]).forEach(c=>{const n=c.name||competencyIdToName[c.key]||competencyIdToName[c.id];if(n&&competencyCatalog[n])vals.push(n)});
-  // Backward compatibility: infer a category from older saved skill labels or verbs.
-  if(!vals.length){
-    const legacy=[];(result.competencies||[]).forEach(c=>(c.skills||[]).forEach(x=>legacy.push(x)));(result.strengths||[]).forEach(c=>{(c.skills||[]).forEach(x=>legacy.push(x));(c.verbs||[]).forEach(x=>legacy.push(x))});
-    legacy.forEach(value=>{const v=norm(value);for(const [skill,data] of Object.entries(skillCatalog)){if(norm(skill)===v||data.verbs.some(x=>norm(x)===v)){if(competencyCatalog[data.comp])vals.push(data.comp);break}}});
-  }
-  return [...new Set(vals)];
-}
-function savedVerbsForCategory(result,category){
-  if(!result)return[];const out=[];
-  const add=v=>{if(v&&!out.some(x=>norm(x)===norm(v)))out.push(v)};
-  const expand=value=>{
+  const out=[];
+  const add=v=>{v=clean(v);if(v&&!out.some(x=>norm(x)===norm(v)))out.push(v)};
+  const take=c=>{(c.verbs||c.skills||[]).forEach(value=>{
     if(!value)return;
-    const direct=(competencyCatalog[category]?.verbs||[]).find(v=>norm(v)===norm(value));
-    if(direct){add(direct);return}
-    if(skillCatalog[value]&&skillCatalog[value].comp===category){skillCatalog[value].verbs.forEach(add);return}
-    for(const [skill,data] of Object.entries(skillCatalog)){
-      if(data.comp===category&&data.verbs.some(v=>norm(v)===norm(value))){add(value);return}
-    }
-  };
-  const take=c=>{const n=c.name||competencyIdToName[c.id]||competencyIdToName[c.key];if(n!==category)return;const values=(Array.isArray(c.verbs)&&c.verbs.length)?c.verbs:(c.skills||[]);values.forEach(expand)};
-  (result.competencies||[]).forEach(take);(result.strengths||[]).forEach(take);
+    if(skillCatalog[value]){skillCatalog[value].verbs.forEach(add);return}
+    const exact=[];
+    for(const data of Object.values(skillCatalog))data.verbs.forEach(v=>{if(norm(v)===norm(value))exact.push(v)});
+    if(exact.length)exact.forEach(add);else add(value);
+  })};
+  (result.competencies||[]).forEach(take);
+  (result.strengths||[]).forEach(take);
   return out;
 }
-function skillButton(skill,source='fallback'){const b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',String(selectedSkill===skill));b.textContent=skill;b.onclick=()=>{selectedSkill=skill;selectedVerb='';$('customVerb').value='';renderSkills();renderVerbs();updateSkillPrompt();build();updateNav()};return b}
-function renderSkills(){
-  const result=matchingSkillResult(),saved=categoriesFromResult(result);
-  $('handoffSkills').innerHTML='';$('handoffMoreSkills').innerHTML='';
+function powerVerbButton(verb,source='fallback'){
+  const b=document.createElement('button');b.type='button';b.className='verb-btn';b.textContent=verb;
+  b.setAttribute('aria-pressed',String(norm(chosenVerb())===norm(verb)&&!$('customVerb').value.trim()));
+  b.onclick=()=>{selectedVerb=verb;$('customVerb').value='';renderPowerVerbs();updateActionPrompt();build();updateNav()};
+  return b;
+}
+function renderPowerVerbs(){
+  const result=matchingSkillResult(),saved=savedPowerVerbs(result);
+  $('handoffVerbs').innerHTML='';$('handoffMoreVerbs').innerHTML='';
   $('handoff').hidden=!saved.length;
-  if(saved.length){saved.slice(0,5).forEach(s=>$('handoffSkills').appendChild(skillButton(s,'handoff')));saved.slice(5).forEach(s=>$('handoffMoreSkills').appendChild(skillButton(s,'handoff')));$('handoffMoreBox').hidden=saved.length<=5}
-  const primary=mode==='teaching'?teachingFallback:otherFallback;
-  const more=mode==='teaching'?teachingMore:otherMore;
-  $('coreSkills').innerHTML='';primary.forEach(s=>$('coreSkills').appendChild(skillButton(s)));
-  $('moreSkills').innerHTML='';more.forEach(s=>$('moreSkills').appendChild(skillButton(s)));
+  if(saved.length){
+    saved.slice(0,8).forEach(v=>$('handoffVerbs').appendChild(powerVerbButton(v,'handoff')));
+    saved.slice(8).forEach(v=>$('handoffMoreVerbs').appendChild(powerVerbButton(v,'handoff')));
+    $('handoffMoreBox').hidden=saved.length<=8;
+  }
+  const primary=mode==='teaching'?teachingFallbackVerbs:otherFallbackVerbs;
+  const more=mode==='teaching'?teachingMoreVerbs:otherMoreVerbs;
+  $('coreVerbs').innerHTML='';primary.forEach(v=>$('coreVerbs').appendChild(powerVerbButton(v)));
+  $('moreVerbs').innerHTML='';more.forEach(v=>$('moreVerbs').appendChild(powerVerbButton(v)));
   $('fallbackSkills').hidden=!!saved.length&&!fallbackForced;
   $('showFallback').hidden=!saved.length||fallbackForced;
-  $('fallbackLabel').textContent=saved.length?'Other skill types':'Choose a skill type';
-  $('skillStatus').textContent=selectedSkill?`${selectedSkill} selected for this bullet.`:'';
+  $('fallbackLabel').textContent=saved.length?'Other strong power verbs':'Strong options for this experience';
+  const v=chosenVerb();
+  $('skillStatus').textContent=v?`${v} selected. It will start your bullet automatically.`:'';
+  $('selectedVerbNote').hidden=!v;
+  $('selectedVerbText').textContent=v||'';
   updateNav();
 }
-function renderVerbs(){
-  $('verbs').innerHTML='';
-  const area=$('verbArea'),data=competencyCatalog[selectedSkill];
-  if(!data){
-    area.hidden=true;
-    $('verbIntro').textContent='Choose a skill type above to see strong education-resume power verbs.';
-    return;
-  }
-  area.hidden=false;
-  $('verbHeading').textContent=`Power verbs for ${selectedSkill}`;
-  const result=matchingSkillResult();
-  const saved=savedVerbsForCategory(result,selectedSkill);
-  const choices=[...saved,...data.verbs].filter((v,i,a)=>a.findIndex(x=>norm(x)===norm(v))===i).slice(0,6);
-  $('verbIntro').textContent=saved.length?`Your saved power verbs appear first. Choose the one that most accurately describes what you did.`:`Choose the verb that most accurately describes what you did. These are strong options for an education resume.`;
-  choices.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='verb-btn';b.textContent=v;b.setAttribute('aria-pressed',String(selectedVerb===v&&!$('customVerb').value.trim()));b.onclick=()=>{selectedVerb=v;$('customVerb').value='';renderVerbs();build();updateNav()};$('verbs').appendChild(b)})
-}
-$('customVerb').addEventListener('input',()=>{if($('customVerb').value.trim())selectedVerb='';renderVerbs();build();updateNav()});
+$('customVerb').addEventListener('input',()=>{if($('customVerb').value.trim())selectedVerb='';renderPowerVerbs();updateActionPrompt();build();updateNav()});
 function chosenVerb(){return clean($('customVerb').value)||selectedVerb}
 
-function updateModeText(){if(mode==='teaching'){$('modeCallout').innerHTML='<strong>Make the teaching more specific.</strong><p>Do not stop at the duty. “Taught small groups” becomes stronger when you show the instructional decision, student need, approach, or evidence behind it.</p>';$('what').placeholder='e.g., led small-group reading instruction';$('scope').placeholder='e.g., for fourth-grade students in three readiness-based groups';$('how').placeholder='e.g., using progress-monitoring data to adjust support';$('result').placeholder='e.g., to provide targeted fluency practice';$('detailHint').textContent='Choose the detail that best shows the depth of the teaching. Add more than one only when it improves the bullet.'}else{$('modeCallout').innerHTML='<strong>Translate the skill—not the job.</strong><p>You do not need to make a retail, service, campus, or other job sound like teaching. Show the communication, problem solving, adaptability, teamwork, leadership, or organization the experience demonstrates.</p>';$('what').placeholder='e.g., assisted customers while managing competing priorities';$('scope').placeholder='e.g., during high-volume shifts or with a five-person team';$('how').placeholder='e.g., by resolving concerns and coordinating with coworkers';$('result').placeholder='e.g., to keep service moving and address customer needs';$('detailHint').textContent='Choose one detail that helps an employer see the scale, approach, or purpose of what you did.'}updateSkillPrompt()}
-function updateSkillPrompt(){const data=competencyCatalog[selectedSkill];if(!data){$('skillPrompt').innerHTML='<strong>Start with the skill type.</strong><p>Choose one skill type above. The prompt here will change to help you make that skill visible in the bullet.</p>';return}const p=mode==='teaching'?data.teach:data.other;$('skillPrompt').innerHTML=`<strong>To show ${esc(selectedSkill)}:</strong><p>${esc(p)}</p>`}
+function updateModeText(){
+  if(mode==='teaching'){
+    $('modeCallout').innerHTML='<strong>Make the teaching more specific.</strong><p>Your verb is already set. Add what you actually did, then use the next screen to show the instructional decision, student need, approach, or evidence.</p>';
+    $('scope').placeholder='e.g., for fourth-grade students in three readiness-based groups';
+    $('how').placeholder='e.g., using progress-monitoring data to adjust support';
+    $('result').placeholder='e.g., to provide targeted fluency practice';
+    $('detailHint').textContent='Choose the detail that best shows the depth of the teaching. Add more than one only when it improves the bullet.';
+  }else{
+    $('modeCallout').innerHTML='<strong>Translate the skill—not the job.</strong><p>Your verb is already set. Add the task or responsibility that proves you used that transferable skill.</p>';
+    $('scope').placeholder='e.g., during high-volume shifts or with a five-person team';
+    $('how').placeholder='e.g., by resolving concerns and coordinating with coworkers';
+    $('result').placeholder='e.g., to keep service moving and address customer needs';
+    $('detailHint').textContent='Choose one detail that helps an employer see the scale, approach, or purpose of what you did.';
+  }
+  updateActionPrompt();
+}
+function promptDataForVerb(verb){
+  const target=norm(verb);if(!target)return null;
+  for(const [name,data] of Object.entries(skillCatalog)){
+    if(data.verbs.some(v=>norm(v)===target))return {name,...data};
+  }
+  return null;
+}
+function updateActionPrompt(){
+  const v=chosenVerb();
+  if($('actionVerbPrefix'))$('actionVerbPrefix').textContent=v||'—';
+  if($('actionVerbQuestion'))$('actionVerbQuestion').textContent=v?v:'your power verb';
+  const data=promptDataForVerb(v);
+  if(!v){$('skillPrompt').innerHTML='<strong>Choose a power verb first.</strong><p>The verb you choose will automatically appear here so you only need to finish the thought.</p>';return}
+  const prompt=data?(mode==='teaching'?data.teach:data.other):(mode==='teaching'?'What did you do that demonstrates this skill in your teaching or education-related experience?':'What task or responsibility demonstrates this skill in the experience?');
+  $('skillPrompt').innerHTML=`<strong>${esc(v)} is already your opening word.</strong><p>${esc(prompt)}</p>`;
+  if(mode==='teaching')$('what').placeholder=taskPlaceholder(v,true);else $('what').placeholder=taskPlaceholder(v,false);
+}
+function taskPlaceholder(verb,teaching){
+  const v=norm(verb);
+  const map={
+    differentiated:'small-group reading instruction for students at different readiness levels',
+    scaffolded:'a multi-step writing task for students needing additional structure',
+    assessed:'student understanding through exit tickets and informal checks',
+    monitored:'student progress during small-group instruction',
+    facilitated:'small-group discussion around a grade-level text',
+    guided:'students through a multi-step problem-solving activity',
+    planned:'standards-aligned lessons and learning activities',
+    collaborated:'with the cooperating teacher to adjust instruction',
+    adapted:'lesson materials for different student needs',
+    implemented:'classroom routines and instructional strategies',
+    communicated:'student progress and classroom updates with families',
+    organized:'materials, schedules, and classroom routines',
+    prioritized:'competing responsibilities during a high-volume shift',
+    resolved:'customer concerns while maintaining service flow',
+    coordinated:'tasks and handoffs across a team',
+    supported:'customers, coworkers, or peers with day-to-day needs'
+  };
+  return map[v]||(teaching?'the lesson, student support, routine, or instructional task':'the task, responsibility, project, or service you handled');
+}
+
+function allKnownPowerVerbs(){const out=[];const add=v=>{if(v&&!out.some(x=>norm(x)===norm(v)))out.push(v)};Object.values(skillCatalog).forEach(d=>d.verbs.forEach(add));[...teachingFallbackVerbs,...teachingMoreVerbs,...otherFallbackVerbs,...otherMoreVerbs].forEach(add);return out}
+function startsWithExtraVerb(text){const t=clean(text);if(!t)return '';const first=norm(t).split(' ')[0];const chosen=norm(chosenVerb());for(const v of allKnownPowerVerbs()){const n=norm(v);if(n&&n!==chosen&&first===n.split(' ')[0])return v}if(chosen&&first===chosen.split(' ')[0])return chosenVerb();return ''}
+function updateActionEntryState(){const extra=startsWithExtraVerb($('what').value);if($('actionStatus')){$('actionStatus').textContent=extra?`You already chose ${chosenVerb()}. Remove “${extra}” and start directly with the task, people, or responsibility that follows ${chosenVerb()}.`:'';$('actionStatus').classList.toggle('action-warning',!!extra)}updateNav()}
 
 document.querySelectorAll('.detail-option').forEach(b=>b.onclick=()=>{const k=b.dataset.detail,ed=$(k+'Editor'),on=b.getAttribute('aria-pressed')==='true';document.querySelectorAll('.detail-option').forEach(x=>{x.setAttribute('aria-pressed','false');$(x.dataset.detail+'Editor').hidden=true});if(on){build();updateNav();return}b.setAttribute('aria-pressed','true');ed.hidden=false;setTimeout(()=>$(k).focus(),0);build();updateNav()});
-['what','scope','how','result'].forEach(id=>$(id).addEventListener('input',()=>{build();updateNav()}));$('final').addEventListener('input',checks);
+['what','scope','how','result'].forEach(id=>$(id).addEventListener('input',()=>{build();if(id==='what')updateActionEntryState();else updateNav()}));$('final').addEventListener('input',checks);
 function lowerFirst(s){return s?s[0].toLowerCase()+s.slice(1):s}
 function build(){const v=chosenVerb(),w=clean($('what').value),active=activeDetailKey(),scope=active==='scope'?clean($('scope').value):'',how=active==='how'?clean($('how').value):'',result=active==='result'?clean($('result').value):'';const parts=[];if(v)parts.push(v);if(w)parts.push(v?lowerFirst(w):w);if(scope)parts.push(scope);if(how)parts.push(how);if(result)parts.push(result);const text=clean(parts.join(' ').replace(/\s+/g,' '));const base=[v,w? (v?lowerFirst(w):w):''].filter(Boolean).join(' ');if($('basePreview'))$('basePreview').textContent=base||'Add what you did on the previous screen.';$('preview').textContent=text||'Your bullet will appear here as you build it.';$('preview').classList.toggle('empty',!text);const auto=$('final').dataset.auto||'';if(!$('final').value||$('final').value===auto){$('final').value=text;$('final').dataset.auto=text}checks()}
-function checks(){const t=clean($('final').value),detail=hasDetail(),items=[];if(chosenVerb())items.push(['good','Starts with a strong power verb linked to the skill type you chose']);else items.push(['tip','Choose a power verb so the bullet starts with a clear action']);if(clean($('what').value))items.push(['good','Explains what you actually did']);else items.push(['tip','Add what you actually did—not only the skill type']);if(detail)items.push(['good','Adds context about who, how, or why']);else items.push(['tip',mode==='teaching'?'Add a detail that shows the instructional decision, student need, approach, or evidence':'Add one detail that shows the scale, approach, or purpose']);items.push(['tip','Numbers are optional. Add them only when they are accurate and genuinely useful']);$('checks').innerHTML=items.map(([c,x])=>`<div class="check ${c}">${esc(x)}</div>`).join('');if(!t)$('final').dataset.auto=''}
+function checks(){const t=clean($('final').value),detail=hasDetail(),items=[];if(chosenVerb())items.push(['good','Starts with the power verb you chose']);else items.push(['tip','Choose a power verb so the bullet starts with a clear action']);if(clean($('what').value)&&!startsWithExtraVerb($('what').value))items.push(['good','Finishes the verb with a clear task or action']);else if(startsWithExtraVerb($('what').value))items.push(['tip',`Remove the extra opening verb “${startsWithExtraVerb($('what').value)}” and finish ${chosenVerb()} directly`]);else items.push(['tip','Add the task or action that comes after your power verb']);if(detail)items.push(['good','Adds context about who, how, or why']);else items.push(['tip',mode==='teaching'?'Add a detail that shows the instructional decision, student need, approach, or evidence':'Add one detail that shows the scale, approach, or purpose']);items.push(['tip','Numbers are optional. Add them only when they are accurate and genuinely useful']);$('checks').innerHTML=items.map(([c,x])=>`<div class="check ${c}">${esc(x)}</div>`).join('');if(!t)$('final').dataset.auto=''}
 
-$('keep').onclick=()=>{const bullet=clean($('final').value);if(!bullet){$('status').textContent='Build or write a bullet first.';return}const exp=$('experience').value.trim()||'Experience';const dup=kept.some(x=>norm(x.experienceName)===norm(exp)&&norm(x.bullet)===norm(bullet));if(!dup){kept.unshift({id:`b-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,experienceName:exp,experienceType:mode,skill:selectedSkill,verb:chosenVerb(),bullet,date:new Date().toISOString()});kept=kept.slice(0,40);safeWrite(BULLET_BANK,kept)}$('status').textContent=dup?'This bullet is already saved.':'Bullet kept.';renderSaved();showStep(6)};
+$('keep').onclick=()=>{const bullet=clean($('final').value);if(!bullet){$('status').textContent='Build or write a bullet first.';return}const exp=$('experience').value.trim()||'Experience';const dup=kept.some(x=>norm(x.experienceName)===norm(exp)&&norm(x.bullet)===norm(bullet));if(!dup){kept.unshift({id:`b-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,experienceName:exp,experienceType:mode,skill:chosenVerb(),verb:chosenVerb(),bullet,date:new Date().toISOString()});kept=kept.slice(0,40);safeWrite(BULLET_BANK,kept)}$('status').textContent=dup?'This bullet is already saved.':'Bullet kept.';renderSaved();showStep(6)};
 async function copyText(text,msg){if(!text){$('status').textContent='There is nothing to copy yet.';return}try{await navigator.clipboard.writeText(text);$('status').textContent=msg}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');$('status').textContent=msg}catch{$('status').textContent='Copy was blocked. Select the text and copy it manually.'}ta.remove()}}
 $('copyCurrent').onclick=()=>copyText(clean($('final').value),'Bullet copied.');$('copyAll').onclick=()=>copyText(kept.map(x=>'• '+x.bullet).join('\n'),'Bullets copied.');$('print').onclick=()=>window.print();
 function renderSaved(){$('savedPanel').hidden=!kept.length;$('savedList').innerHTML=kept.map((x,i)=>`<div class="saved"><p>${esc(x.bullet)}</p><span class="small">${esc(x.experienceName)}${x.skill?' · '+esc(x.skill):''}</span><div class="saved-actions"><button type="button" data-copy="${i}">Copy</button><button type="button" data-remove="${i}">Remove</button></div></div>`).join('')}
@@ -386,20 +427,20 @@ function activeDetailKey(){const b=document.querySelector('.detail-option[aria-p
 function hasDetail(){const k=activeDetailKey();return !!(k&&clean($(k).value))}
 function updateNav(){
   if($('experienceNext'))$('experienceNext').disabled=!$('experience').value.trim();
-  if($('skillNext'))$('skillNext').disabled=!(selectedSkill&&chosenVerb());
-  if($('whatNext'))$('whatNext').disabled=!clean($('what').value);
+  if($('skillNext'))$('skillNext').disabled=!chosenVerb();
+  if($('whatNext'))$('whatNext').disabled=!clean($('what').value)||!!startsWithExtraVerb($('what').value);
   if($('detailNext'))$('detailNext').disabled=!hasDetail();
 }
 $('experienceNext').onclick=()=>{if(!$('experience').value.trim())return;setMode(detectMode($('experience').value));showStep(2)};
-$('skillNext').onclick=()=>{if(selectedSkill&&chosenVerb())showStep(3)};
-$('whatNext').onclick=()=>{if(clean($('what').value)){build();showStep(4)}};
+$('skillNext').onclick=()=>{if(chosenVerb()){updateActionPrompt();showStep(3);setTimeout(()=>$('what').focus(),120)}};
+$('whatNext').onclick=()=>{if(clean($('what').value)&&!startsWithExtraVerb($('what').value)){build();showStep(4)}};
 $('detailNext').onclick=()=>{if(hasDetail()){build();showStep(5)}};
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>showStep(Number(b.dataset.back)));
 
-function resetBullet(){selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';['what','scope','how','result','final'].forEach(id=>$(id).value='');$('final').dataset.auto='';document.querySelectorAll('.detail-option').forEach(b=>b.setAttribute('aria-pressed','false'));['scopeEditor','howEditor','resultEditor'].forEach(id=>$(id).hidden=true);$('status').textContent='';renderSkills();renderVerbs();updateModeText();build();showStep(2)}
+function resetBullet(){selectedVerb='';fallbackForced=false;$('customVerb').value='';['what','scope','how','result','final'].forEach(id=>$(id).value='');$('final').dataset.auto='';document.querySelectorAll('.detail-option').forEach(b=>b.setAttribute('aria-pressed','false'));['scopeEditor','howEditor','resultEditor'].forEach(id=>$(id).hidden=true);$('status').textContent='';renderPowerVerbs();updateModeText();updateActionPrompt();build();showStep(2)}
 $('resetBullet').onclick=resetBullet;$('differentExperience').onclick=()=>{resetBullet();$('experience').value='';setMode('teaching');showStep(1);setTimeout(()=>$('experience').focus(),200)};
-window.addEventListener('focus',()=>{loadData();renderSkills();renderVerbs();updateNav()});
-loadData();setMode('teaching');renderSkills();renderVerbs();updateModeText();build();showStep(1,false);updateNav();
+window.addEventListener('focus',()=>{loadData();renderPowerVerbs();updateActionPrompt();updateNav()});
+loadData();setMode('teaching');renderPowerVerbs();updateModeText();updateActionPrompt();build();showStep(1,false);updateNav();
 })();
 </script>
 </body>
