@@ -208,6 +208,12 @@ let mode='teaching', selectedSkill='', selectedVerb='', recent=[], skillsBank=[]
 function safeRead(key){try{const x=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
 function safeStoredJson(key,fallback=null){try{const raw=localStorage.getItem(key);return raw===null?fallback:JSON.parse(raw)}catch{return fallback}}
 function safeWrite(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true}catch{return false}}
+function detectMode(name='',sourceCategory=''){
+  const n=norm(name),c=norm(sourceCategory);
+  if(['teaching','student teaching','teaching experience','practicum','field experience','related experience'].some(x=>c.includes(x)))return 'teaching';
+  const teachingWords=['student teacher','student teaching','practicum','field experience','classroom','teacher','teaching','tutor','tutoring','paraeducator','paraprofessional','school','coach','camp counselor','after school','childcare','daycare','preschool','lesson','instruction'];
+  return teachingWords.some(w=>n.includes(norm(w)))?'teaching':'other';
+}
 function loadData(){
   // Use the same experience sources and parsing rules as the Education Skills activity.
   // Skills results decorate a matching experience; they never create a new experience entry.
