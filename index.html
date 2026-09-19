@@ -36,12 +36,10 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <p class="meta">Build one bullet at a time. Each screen asks you to make one choice or add one piece.</p>
     <div class="stepper" aria-label="Bullet builder steps">
       <div class="step-chip current" data-chip="1">Experience</div>
-      <div class="step-chip" data-chip="2">Type</div>
-      <div class="step-chip" data-chip="3">Skill</div>
-      <div class="step-chip" data-chip="4">Verb</div>
-      <div class="step-chip" data-chip="5">Action</div>
-      <div class="step-chip" data-chip="6">Detail</div>
-      <div class="step-chip" data-chip="7">Review</div>
+      <div class="step-chip" data-chip="2">Skill + verb</div>
+      <div class="step-chip" data-chip="3">Action</div>
+      <div class="step-chip" data-chip="4">Detail</div>
+      <div class="step-chip" data-chip="5">Review</div>
     </div>
   </section>
 
@@ -62,24 +60,22 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <div class="step-actions"><div></div><div class="right-actions"><button class="btn primary" id="experienceNext" type="button" disabled>Next →</button></div></div>
   </section>
 
-  <section class="panel step-panel" id="stepType" data-step="2" hidden aria-labelledby="type-title">
-    <div class="step-label"><span class="step-number">2</span> Experience type</div>
-    <h2 id="type-title">How should we treat this experience?</h2>
-    <p class="small">This only changes the prompts you see. It does not make one type of experience more valuable than another.</p>
-    <div class="mode-card">
-      <div class="mode-row" role="group" aria-label="Experience type"><button class="mode-btn" type="button" data-mode="teaching" aria-pressed="true">Teaching / education-related</button><button class="mode-btn" type="button" data-mode="other" aria-pressed="false">Other experience</button></div>
-      <span class="hint">Choose the option that best describes the experience you entered.</span>
-    </div>
-    <div class="step-actions"><button class="btn" data-back="1" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="typeNext" type="button">Next →</button></div></div>
-  </section>
+  <section class="panel step-panel" id="stepSkill" data-step="2" hidden aria-labelledby="skill-title">
+    <div class="step-label"><span class="step-number">2</span> Skill</div>
+    <h2 id="skill-title">What should this bullet highlight?</h2>
+    <p class="small">First, confirm the type of experience. Your skill choices will update immediately.</p>
 
-  <section class="panel step-panel" id="stepSkill" data-step="3" hidden aria-labelledby="skill-title">
-    <div class="step-label"><span class="step-number">3</span> Skill</div>
-    <h2 id="skill-title">Which skill type should this bullet show?</h2>
-    <p id="skillIntro" class="small">Choose one skill type for this bullet. If you used the Skills activity, your selected skill types appear first.</p>
+    <div class="mode-card" style="margin-bottom:16px">
+      <p class="skill-group-label" style="margin-top:0">Experience type</p>
+      <div class="mode-row" role="group" aria-label="Experience type"><button class="mode-btn" type="button" data-mode="teaching" aria-pressed="true">Teaching / education-related</button><button class="mode-btn" type="button" data-mode="other" aria-pressed="false">Other experience</button></div>
+      <span class="hint">We made a best guess from the experience you entered. Change it if needed.</span>
+    </div>
+
+    <p class="skill-group-label">Choose one skill type</p>
+    <p id="skillIntro" class="small">If you used the Skills activity, your selected skill types appear first.</p>
     <div class="handoff" id="handoff" hidden>
-      <p class="skill-group-label">Your selected skill types from this experience</p>
-      <p class="small">You already identified these in the Skills activity.</p>
+      <p class="skill-group-label">From your Skills activity</p>
+      <p class="small">Choose the skill type you want this bullet to show.</p>
       <div class="chips" id="handoffSkills"></div>
       <details id="handoffMoreBox" hidden><summary>See more of my skill types</summary><div class="chips" id="handoffMoreSkills" style="margin-top:9px"></div></details>
       <button class="btn soft" id="showFallback" type="button" style="margin-top:11px">Choose a different skill type</button>
@@ -90,29 +86,28 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
       <details class="skill-more"><summary>See more skill types</summary><div class="chips" id="moreSkills"></div></details>
     </div>
     <div class="status" id="skillStatus" role="status" aria-live="polite"></div>
-    <div class="step-actions"><button class="btn" data-back="2" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="skillNext" type="button" disabled>Next →</button></div></div>
+
+    <div id="verbArea" hidden style="margin-top:18px;padding-top:18px;border-top:1px solid #E2E2E2">
+      <p class="skill-group-label" id="verbHeading">Choose a power verb</p>
+      <p class="small" id="verbIntro">Choose a skill type first to see a short list of strong education-resume power verbs.</p>
+      <div class="verb-grid" id="verbs"></div>
+      <div class="field single-field" style="margin-top:12px"><label for="customVerb">Or type another accurate power verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Coordinated"></div>
+    </div>
+
+    <div class="step-actions"><button class="btn" data-back="1" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="skillNext" type="button" disabled>Next →</button></div></div>
   </section>
 
-  <section class="panel step-panel" id="stepVerb" data-step="4" hidden aria-labelledby="verb-title">
-    <div class="step-label"><span class="step-number">4</span> Power verb</div>
-    <h2 id="verb-title">Which power verb best describes what you did?</h2>
-    <p class="small" id="verbIntro">Choose a skill type first to see a short list of strong education-resume power verbs.</p>
-    <div class="verb-grid" id="verbs"></div>
-    <div class="field single-field"><label for="customVerb">Or type another accurate power verb</label><input id="customVerb" type="text" autocomplete="off" placeholder="e.g., Coordinated"></div>
-    <div class="step-actions"><button class="btn" data-back="3" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="verbNext" type="button" disabled>Next →</button></div></div>
-  </section>
-
-  <section class="panel step-panel" id="stepAction" data-step="5" hidden aria-labelledby="action-title">
-    <div class="step-label"><span class="step-number">5</span> What you did</div>
+  <section class="panel step-panel" id="stepAction" data-step="3" hidden aria-labelledby="action-title">
+    <div class="step-label"><span class="step-number">3</span> What you did</div>
     <h2 id="action-title">What did you actually do?</h2>
     <div class="callout" id="modeCallout"></div>
     <div class="dynamic-help" id="skillPrompt"></div>
     <div class="field"><label for="what">Describe the action</label><textarea id="what"></textarea><span class="hint">Start after the power verb. Focus on the responsibility, contribution, or instructional action—not the skill label.</span></div>
-    <div class="step-actions"><button class="btn" data-back="4" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="whatNext" type="button" disabled>Next →</button></div></div>
+    <div class="step-actions"><button class="btn" data-back="2" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="whatNext" type="button" disabled>Next →</button></div></div>
   </section>
 
-  <section class="panel step-panel" id="stepDetail" data-step="6" hidden aria-labelledby="detail-title">
-    <div class="step-label"><span class="step-number">6</span> Useful detail</div>
+  <section class="panel step-panel" id="stepDetail" data-step="4" hidden aria-labelledby="detail-title">
+    <div class="step-label"><span class="step-number">4</span> Useful detail</div>
     <h2 id="detail-title">Add one detail that makes the action meaningful</h2>
     <p class="small" id="detailHint">Choose the type of detail that adds the most useful context.</p>
     <div class="formula"><strong>Your bullet so far:</strong> <span id="basePreview"></span></div>
@@ -120,16 +115,16 @@ h1,h2{font-family:"Antonio","Arial Narrow",Arial,sans-serif;font-weight:700}h1{f
     <div class="detail-editor" id="scopeEditor" hidden><label for="scope">Who or what was involved?</label><textarea id="scope"></textarea></div>
     <div class="detail-editor" id="howEditor" hidden><label for="how">How did you do it?</label><textarea id="how"></textarea></div>
     <div class="detail-editor" id="resultEditor" hidden><label for="result">Why did it matter or what happened?</label><textarea id="result"></textarea></div>
-    <div class="step-actions"><button class="btn" data-back="5" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="detailNext" type="button" disabled>Review →</button></div></div>
+    <div class="step-actions"><button class="btn" data-back="3" type="button">← Back</button><div class="right-actions"><button class="btn primary" id="detailNext" type="button" disabled>Review →</button></div></div>
   </section>
 
-  <section class="panel step-panel" id="stepReview" data-step="7" hidden aria-labelledby="review-title">
-    <div class="step-label"><span class="step-number">7</span> Review</div>
+  <section class="panel step-panel" id="stepReview" data-step="5" hidden aria-labelledby="review-title">
+    <div class="step-label"><span class="step-number">5</span> Review</div>
     <h2 id="review-title">Quick check</h2>
     <div class="preview empty" id="preview">Your bullet will appear here as you build it.</div>
     <div class="check-list" id="checks"></div>
     <div class="field"><label for="final">Final version</label><textarea id="final" placeholder="Edit for accuracy and flow."></textarea><span class="hint">Keep it concise. No “I” and no ending period.</span></div>
-    <div class="step-actions"><button class="btn" data-back="6" type="button">← Back</button><div class="right-actions"><button class="btn" id="copyCurrent" type="button">Copy This Bullet</button><button class="btn primary" id="keep" type="button">Keep This Bullet</button></div></div>
+    <div class="step-actions"><button class="btn" data-back="4" type="button">← Back</button><div class="right-actions"><button class="btn" id="copyCurrent" type="button">Copy This Bullet</button><button class="btn primary" id="keep" type="button">Keep This Bullet</button></div></div>
     <div class="status" id="status" role="status" aria-live="polite"></div>
   </section>
 
@@ -346,12 +341,19 @@ function renderSkills(){
   updateNav();
 }
 function renderVerbs(){
-  $('verbs').innerHTML='';const data=competencyCatalog[selectedSkill];
-  if(!data){$('verbIntro').textContent='Choose a skill type above to see strong education-resume power verbs.';return}
+  $('verbs').innerHTML='';
+  const area=$('verbArea'),data=competencyCatalog[selectedSkill];
+  if(!data){
+    area.hidden=true;
+    $('verbIntro').textContent='Choose a skill type above to see strong education-resume power verbs.';
+    return;
+  }
+  area.hidden=false;
+  $('verbHeading').textContent=`Power verbs for ${selectedSkill}`;
   const result=matchingSkillResult();
   const saved=savedVerbsForCategory(result,selectedSkill);
   const choices=[...saved,...data.verbs].filter((v,i,a)=>a.findIndex(x=>norm(x)===norm(v))===i).slice(0,6);
-  $('verbIntro').textContent=saved.length?`Your saved power verbs for ${selectedSkill} appear first. Choose the one that most accurately describes what you did.`:`Choose a power verb for ${selectedSkill}. These are strong options for an education resume—use only what accurately describes your experience.`;
+  $('verbIntro').textContent=saved.length?`Your saved power verbs appear first. Choose the one that most accurately describes what you did.`:`Choose the verb that most accurately describes what you did. These are strong options for an education resume.`;
   choices.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='verb-btn';b.textContent=v;b.setAttribute('aria-pressed',String(selectedVerb===v&&!$('customVerb').value.trim()));b.onclick=()=>{selectedVerb=v;$('customVerb').value='';renderVerbs();build();updateNav()};$('verbs').appendChild(b)})
 }
 $('customVerb').addEventListener('input',()=>{if($('customVerb').value.trim())selectedVerb='';renderVerbs();build();updateNav()});
@@ -366,17 +368,17 @@ function lowerFirst(s){return s?s[0].toLowerCase()+s.slice(1):s}
 function build(){const v=chosenVerb(),w=clean($('what').value),active=activeDetailKey(),scope=active==='scope'?clean($('scope').value):'',how=active==='how'?clean($('how').value):'',result=active==='result'?clean($('result').value):'';const parts=[];if(v)parts.push(v);if(w)parts.push(v?lowerFirst(w):w);if(scope)parts.push(scope);if(how)parts.push(how);if(result)parts.push(result);const text=clean(parts.join(' ').replace(/\s+/g,' '));const base=[v,w? (v?lowerFirst(w):w):''].filter(Boolean).join(' ');if($('basePreview'))$('basePreview').textContent=base||'Add what you did on the previous screen.';$('preview').textContent=text||'Your bullet will appear here as you build it.';$('preview').classList.toggle('empty',!text);const auto=$('final').dataset.auto||'';if(!$('final').value||$('final').value===auto){$('final').value=text;$('final').dataset.auto=text}checks()}
 function checks(){const t=clean($('final').value),detail=hasDetail(),items=[];if(chosenVerb())items.push(['good','Starts with a strong power verb linked to the skill type you chose']);else items.push(['tip','Choose a power verb so the bullet starts with a clear action']);if(clean($('what').value))items.push(['good','Explains what you actually did']);else items.push(['tip','Add what you actually did—not only the skill type']);if(detail)items.push(['good','Adds context about who, how, or why']);else items.push(['tip',mode==='teaching'?'Add a detail that shows the instructional decision, student need, approach, or evidence':'Add one detail that shows the scale, approach, or purpose']);items.push(['tip','Numbers are optional. Add them only when they are accurate and genuinely useful']);$('checks').innerHTML=items.map(([c,x])=>`<div class="check ${c}">${esc(x)}</div>`).join('');if(!t)$('final').dataset.auto=''}
 
-$('keep').onclick=()=>{const bullet=clean($('final').value);if(!bullet){$('status').textContent='Build or write a bullet first.';return}const exp=$('experience').value.trim()||'Experience';const dup=kept.some(x=>norm(x.experienceName)===norm(exp)&&norm(x.bullet)===norm(bullet));if(!dup){kept.unshift({id:`b-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,experienceName:exp,experienceType:mode,skill:selectedSkill,verb:chosenVerb(),bullet,date:new Date().toISOString()});kept=kept.slice(0,40);safeWrite(BULLET_BANK,kept)}$('status').textContent=dup?'This bullet is already saved.':'Bullet kept.';renderSaved();showStep(8)};
+$('keep').onclick=()=>{const bullet=clean($('final').value);if(!bullet){$('status').textContent='Build or write a bullet first.';return}const exp=$('experience').value.trim()||'Experience';const dup=kept.some(x=>norm(x.experienceName)===norm(exp)&&norm(x.bullet)===norm(bullet));if(!dup){kept.unshift({id:`b-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,experienceName:exp,experienceType:mode,skill:selectedSkill,verb:chosenVerb(),bullet,date:new Date().toISOString()});kept=kept.slice(0,40);safeWrite(BULLET_BANK,kept)}$('status').textContent=dup?'This bullet is already saved.':'Bullet kept.';renderSaved();showStep(6)};
 async function copyText(text,msg){if(!text){$('status').textContent='There is nothing to copy yet.';return}try{await navigator.clipboard.writeText(text);$('status').textContent=msg}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');$('status').textContent=msg}catch{$('status').textContent='Copy was blocked. Select the text and copy it manually.'}ta.remove()}}
 $('copyCurrent').onclick=()=>copyText(clean($('final').value),'Bullet copied.');$('copyAll').onclick=()=>copyText(kept.map(x=>'• '+x.bullet).join('\n'),'Bullets copied.');$('print').onclick=()=>window.print();
 function renderSaved(){$('savedPanel').hidden=!kept.length;$('savedList').innerHTML=kept.map((x,i)=>`<div class="saved"><p>${esc(x.bullet)}</p><span class="small">${esc(x.experienceName)}${x.skill?' · '+esc(x.skill):''}</span><div class="saved-actions"><button type="button" data-copy="${i}">Copy</button><button type="button" data-remove="${i}">Remove</button></div></div>`).join('')}
-$('savedList').onclick=e=>{const b=e.target.closest('button');if(!b)return;const i=Number(b.dataset.copy??b.dataset.remove);if(b.dataset.copy!==undefined)copyText(kept[i].bullet,'Bullet copied.');else{kept.splice(i,1);safeWrite(BULLET_BANK,kept);renderSaved();if(!kept.length)showStep(3)}};
+$('savedList').onclick=e=>{const b=e.target.closest('button');if(!b)return;const i=Number(b.dataset.copy??b.dataset.remove);if(b.dataset.copy!==undefined)copyText(kept[i].bullet,'Bullet copied.');else{kept.splice(i,1);safeWrite(BULLET_BANK,kept);renderSaved();if(!kept.length)showStep(2)}};
 
 const stepPanels=[...document.querySelectorAll('.step-panel')],stepChips=[...document.querySelectorAll('.step-chip')];
 function showStep(step,scroll=true){
   stepPanels.forEach(p=>p.hidden=Number(p.dataset.step)!==step);
-  $('savedPanel').hidden=step!==8;
-  stepChips.forEach(c=>{const n=Number(c.dataset.chip);c.classList.toggle('current',n===step);c.classList.toggle('done',step===8||n<step)});
+  $('savedPanel').hidden=step!==6;
+  stepChips.forEach(c=>{const n=Number(c.dataset.chip);c.classList.toggle('current',n===step);c.classList.toggle('done',step===6||n<step)});
   if(scroll)document.querySelector('.intro').scrollIntoView({behavior:'smooth',block:'start'});
   updateNav();
 }
@@ -384,20 +386,17 @@ function activeDetailKey(){const b=document.querySelector('.detail-option[aria-p
 function hasDetail(){const k=activeDetailKey();return !!(k&&clean($(k).value))}
 function updateNav(){
   if($('experienceNext'))$('experienceNext').disabled=!$('experience').value.trim();
-  if($('skillNext'))$('skillNext').disabled=!selectedSkill;
-  if($('verbNext'))$('verbNext').disabled=!chosenVerb();
+  if($('skillNext'))$('skillNext').disabled=!(selectedSkill&&chosenVerb());
   if($('whatNext'))$('whatNext').disabled=!clean($('what').value);
   if($('detailNext'))$('detailNext').disabled=!hasDetail();
 }
 $('experienceNext').onclick=()=>{if(!$('experience').value.trim())return;setMode(detectMode($('experience').value));showStep(2)};
-$('typeNext').onclick=()=>showStep(3);
-$('skillNext').onclick=()=>{if(selectedSkill)showStep(4)};
-$('verbNext').onclick=()=>{if(chosenVerb())showStep(5)};
-$('whatNext').onclick=()=>{if(clean($('what').value)){build();showStep(6)}};
-$('detailNext').onclick=()=>{if(hasDetail()){build();showStep(7)}};
+$('skillNext').onclick=()=>{if(selectedSkill&&chosenVerb())showStep(3)};
+$('whatNext').onclick=()=>{if(clean($('what').value)){build();showStep(4)}};
+$('detailNext').onclick=()=>{if(hasDetail()){build();showStep(5)}};
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>showStep(Number(b.dataset.back)));
 
-function resetBullet(){selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';['what','scope','how','result','final'].forEach(id=>$(id).value='');$('final').dataset.auto='';document.querySelectorAll('.detail-option').forEach(b=>b.setAttribute('aria-pressed','false'));['scopeEditor','howEditor','resultEditor'].forEach(id=>$(id).hidden=true);$('status').textContent='';renderSkills();renderVerbs();updateModeText();build();showStep(3)}
+function resetBullet(){selectedSkill='';selectedVerb='';fallbackForced=false;$('customVerb').value='';['what','scope','how','result','final'].forEach(id=>$(id).value='');$('final').dataset.auto='';document.querySelectorAll('.detail-option').forEach(b=>b.setAttribute('aria-pressed','false'));['scopeEditor','howEditor','resultEditor'].forEach(id=>$(id).hidden=true);$('status').textContent='';renderSkills();renderVerbs();updateModeText();build();showStep(2)}
 $('resetBullet').onclick=resetBullet;$('differentExperience').onclick=()=>{resetBullet();$('experience').value='';setMode('teaching');showStep(1);setTimeout(()=>$('experience').focus(),200)};
 window.addEventListener('focus',()=>{loadData();renderSkills();renderVerbs();updateNav()});
 loadData();setMode('teaching');renderSkills();renderVerbs();updateModeText();build();showStep(1,false);updateNav();
